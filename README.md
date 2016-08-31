@@ -5,7 +5,7 @@ To quote the [House Chaplain's website](http://chaplain.house.gov/chaplaincy/gue
 
 ## Quick setup
 
-It's recommended to make a virtualenv, then run:
+Python 2.5-2.7 is required. It's recommended to make a virtualenv, then run:
 
 ```bash
 pip install -r requirements.txt
