@@ -55,13 +55,13 @@ As of February 8, 2013, there are 633 such guest prayers on the website. This sc
 ```
 
 ## Internal method of member lookup
-To get the [Congressional Bioguide](http://bioguide.congress.gov/biosearch/biosearch.asp) ID for each member, I wrote a small library called `member_lookup.py`, which compares the plaintext name of the member to the NYT API for that session
+To get the [Congressional Bioguide](http://bioguide.congress.gov/biosearch/biosearch.asp) ID for each member, I wrote a small library called `member_lookup.py`, which compares the plaintext name of the member to the ProPublica API for that session
 
 ### Setup
-You need to get an [NYT API key](http://developer.nytimes.com/docs/reference/keys) with access to the Congress api. Put it in a file called keys.json in the root directory like so:
+You need to get a [ProPublica API key](mailto:apihelp@propublica.org). Put it in a file called keys.json in the root directory like so:
 ```
    {
-      "nytimes": "[key]"
+      "propublica": "[key]"
    }
 ```
 "keys.json" is included in .gitignore

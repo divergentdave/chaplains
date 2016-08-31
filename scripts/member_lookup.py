@@ -10,10 +10,10 @@ except:
     print "Couldn't load 'keys.json' from root directory"
     sys.exit()
     
-key = keys.get("nytimes", False)
+key = keys.get("propublica", False)
     
 if not key:
-    print "Couldn't find New York Times API key in keys.json"
+    print "Couldn't find ProPublica API key in keys.json"
     sys.exit()
     
 # Thanks to Peter Norvig for edit distance code
@@ -43,8 +43,12 @@ def get_members(congress, chamber):
         print "Couldn't guess which chamber you meant by '%s'" % chamber
         return
     
-    url = "http://api.nytimes.com/svc/politics/v3/us/legislative/congress/%d/%s/members.json?api-key=%s" % (congress, chamber, key)
-    members = json.loads(download(url, os.getcwd() + "/members/%s_%d.json" % (chamber, congress)))
+    url = "https://api.propublica.org/congress/v1/%d/%s/members.json" % (congress, chamber)
+    filename = "%s_%d.json" % (chamber, congress)
+    destination_path = os.path.join(os.getcwd(), "members", filename)
+    members_raw = download(url, destination_path,
+                           {'headers': {'X-API-Key': key}})
+    members = json.loads(members_raw)
     return members
 
 def lookup(name, congress=113, state='', chamber='house'):

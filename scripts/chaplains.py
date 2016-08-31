@@ -83,7 +83,7 @@ def collect(options = {}):
                 info['member']['bioguide'] = member_info['id']
             else:
                 print member_info['status'], info['member']['name']
-                print "Unable to find %s (%d) in the NYT API" % (info['sponsor'], info['session'])                  
+                print "Unable to find %s (%d) in the ProPublica API" % (info['sponsor'], info['session'])
                 info['member']['bioguide'] = None
             info.pop("sponsor")
         write(json.dumps(info, indent=2), os.getcwd() + "/data/" +  uid + ".json")

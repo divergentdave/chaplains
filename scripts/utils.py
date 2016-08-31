@@ -31,6 +31,9 @@ def download(url, destination=None, options={}):
   # if need a POST request with data
   postdata = options.get('postdata', False)
 
+  # extra headers to pass to the server
+  headers = options.get('headers', {})
+
   if test:
     cache = test_cache_dir()
   else:
@@ -51,9 +54,9 @@ def download(url, destination=None, options={}):
       logging.info("Downloading: %s" % url)
       
       if postdata:
-        response = scraper.urlopen(url, 'POST', postdata)
+        response = scraper.urlopen(url, 'POST', postdata, headers=headers)
       else:
-        response = scraper.urlopen(url)
+        response = scraper.urlopen(url, headers=headers)
       body = response.bytes # str(...) tries to encode as ASCII the already-decoded unicode content
     except scrapelib.HTTPError as e:
       #logging.error("Error downloading %s:\n\n%s" % (url, format_exception(e)))
