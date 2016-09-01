@@ -1,3 +1,7 @@
 *.pyc
-deploy.py
-keys.json
+/deploy.py
+/keys.json
+/cache
+/data
+/members
+/src
